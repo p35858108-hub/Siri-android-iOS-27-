@@ -1,17 +1,16 @@
 package com.assistant.siri.ui.capsule
 
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.asState
 import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -33,22 +32,28 @@ fun SiriWaveIndicator(
     animate: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val transition = rememberInfiniteTransition(label = "siriWave")
-    val phase by transition.animateFloat(
-        initialValue = 0f,
-        targetValue = (2.0 * PI).toFloat(),
-        animationSpec = if (animate) {
-            infiniteRepeatable(tween(durationMillis = 2300, easing = LinearEasing))
+    val phaseAnimation = remember { Animatable(0f) }
+
+    // Al desactivar movimiento se cancela el bucle y la onda queda en una posición fija.
+    LaunchedEffect(animate) {
+        if (animate) {
+            phaseAnimation.animateTo(
+                targetValue = (2.0 * PI).toFloat(),
+                animationSpec = infiniteRepeatable(
+                    animation = tween(durationMillis = 2300, easing = LinearEasing)
+                )
+            )
         } else {
-            snap()
-        },
-        label = "siriWavePhase"
-    )
+            phaseAnimation.snapTo(0f)
+        }
+    }
+    // La animación invalida el dibujo del Canvas, no toda la composición.
+    val phase = phaseAnimation.asState()
 
     val palette = listOf(
         Color(0xFF42D8FF),
         Color(0xFF718CFF),
-        Color(0xFFB36BFF),
+        Color(0xFFB36CFF),
         Color(0xFFFF78C8),
         Color(0xFFFFA66B)
     )
@@ -57,6 +62,7 @@ fun SiriWaveIndicator(
     Canvas(modifier.size(width = 144.dp, height = 32.dp)) {
         val centerY = size.height / 2f
         val intensity = level.coerceIn(0f, 1f)
+        val currentPhase = phase.value
         val glowWidth = 8.dp.toPx()
         val midWidth = 3.8.dp.toPx()
         val coreWidth = 1.35.dp.toPx()
@@ -64,7 +70,7 @@ fun SiriWaveIndicator(
         // Las capas avanzan a distinta velocidad para dar profundidad y movimiento orgánico.
         for (layer in 0 until 5) {
             val path = Path()
-            val layerPhase = phase * (0.72f + layer * 0.105f) + layer * 1.17f
+            val layerPhase = currentPhase * (0.72f + layer * 0.105f) + layer * 1.17f
             val baseAmplitude = size.height * (0.15f + layer * 0.022f) *
                 (0.48f + intensity * 0.95f)
 
@@ -72,7 +78,7 @@ fun SiriWaveIndicator(
                 val x = size.width * step / 96f
                 val normalized = (x / size.width) * 2f - 1f
                 val envelope = (1f - abs(normalized)).coerceAtLeast(0f).pow(0.62f)
-                val modulation = 0.82f + 0.18f * sin(phase * 0.55f + layer * 1.4f)
+                val modulation = 0.82f + 0.18f * sin(currentPhase * 0.55f + layer * 1.4f)
                 val wave = sin(normalized * 5.4f + layerPhase) *
                     baseAmplitude * envelope * modulation
                 val y = centerY + wave
@@ -105,7 +111,7 @@ fun SiriWaveIndicator(
             val x = size.width * step / 96f
             val normalized = (x / size.width) * 2f - 1f
             val envelope = (1f - abs(normalized)).coerceAtLeast(0f).pow(0.72f)
-            val y = centerY + sin(normalized * 5.9f + phase * 1.08f) *
+            val y = centerY + sin(normalized * 5.9f + currentPhase * 1.08f) *
                 size.height * (0.12f + intensity * 0.17f) * envelope
             if (step == 0) core.moveTo(x, y) else core.lineTo(x, y)
         }
