@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: Build debug APK
+    name: Build debug APK and Android test APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,9 +31,9 @@ jobs:
         working-directory: Siri
         run: chmod +x ./gradlew
 
-      - name: Build APK
+      - name: Build app and compile Android regression tests
         working-directory: Siri
-        run: ./gradlew --no-daemon assembleDebug
+        run: ./gradlew --no-daemon assembleDebug assembleDebugAndroidTest
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
