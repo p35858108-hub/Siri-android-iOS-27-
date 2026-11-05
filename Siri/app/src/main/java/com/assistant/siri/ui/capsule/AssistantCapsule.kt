@@ -259,17 +259,6 @@ fun AssistantCapsule(
                         morphColor = morphColor
                     )
                 }
-                .semantics {
-                    contentDescription = description
-                    stateDescription = stateLabel
-                    liveRegion = LiveRegionMode.Polite
-                }
-                .clickable(
-                    interactionSource = interactionSource,
-                    indication = null,
-                    enabled = clickable,
-                    role = Role.Button
-                ) { onClick(state) }
                 .then(gestureModifier)
         ) {
             // El contenido se maquetea siempre al ancho de destino y se centra dentro del marco
@@ -279,7 +268,24 @@ fun AssistantCapsule(
                     .align(Alignment.TopCenter)
                     .graphicsLayer { alpha = 1f - smoothStep(0f, 0.45f, morph().coerceIn(0f, 1f)) }
                     .requiredWidth(targetWidth)
-                    .wrapContentHeight(align = Alignment.Top, unbounded = true)
+                    .then(
+                        if (kind == CapsuleKind.IDLE) {
+                            Modifier.height(with(density) { rest.height.toDp() })
+                        } else {
+                            Modifier.wrapContentHeight(align = Alignment.Top, unbounded = true)
+                        }
+                    )
+                    .semantics {
+                        contentDescription = description
+                        stateDescription = stateLabel
+                        liveRegion = LiveRegionMode.Polite
+                    }
+                    .clickable(
+                        interactionSource = interactionSource,
+                        indication = null,
+                        enabled = clickable,
+                        role = Role.Button
+                    ) { onClick(state) }
                     .onSizeChanged { size -> measuredHeights[kind] = size.height }
             ) {
                 AnimatedContent(
