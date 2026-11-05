@@ -85,17 +85,26 @@ fun AssistantBackdrop(
         Box(Modifier.fillMaxSize().backdropBlur { maxRadiusPx * progress.value * dim() }) {
             content()
         }
-        Box(
-            Modifier
-                .fillMaxSize()
-                .graphicsLayer { alpha = (progress.value * dim()).coerceIn(0f, 1f) }
-                .background(scrimColor)
-                .clickable(
-                    interactionSource = interactionSource,
-                    indication = null,
-                    enabled = active && onScrimClick != null
-                ) { onScrimClick?.invoke() }
-        )
+
+        // IMPORTANTE: no pongas clickable(enabled = false) en una capa a pantalla completa.
+        // Compose sigue considerando esa capa en el hit-test y puede tragarse los toques
+        // destinados a los botones que hay debajo. En reposo, el scrim debe ser transparente
+        // también para los eventos táctiles, no solo visualmente.
+        val scrimModifier = Modifier
+            .fillMaxSize()
+            .graphicsLayer { alpha = (progress.value * dim()).coerceIn(0f, 1f) }
+            .background(scrimColor)
+            .then(
+                if (active && onScrimClick != null) {
+                    Modifier.clickable(
+                        interactionSource = interactionSource,
+                        indication = null
+                    ) { onScrimClick() }
+                } else {
+                    Modifier
+                }
+            )
+        Box(scrimModifier)
     }
 }
 
