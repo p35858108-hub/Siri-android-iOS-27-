@@ -331,7 +331,7 @@ private fun ListeningContent(level: Float, partialText: String, animate: Boolean
             .padding(horizontal = 20.dp, vertical = 14.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ListeningIndicator(level = level, animate = animate)
+        SiriWaveIndicator(level = level, animate = animate)
         if (partialText.isNotBlank()) {
             Spacer(Modifier.height(10.dp))
             Text(
@@ -351,10 +351,10 @@ private fun ProcessingContent(animate: Boolean) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 18.dp),
+            .padding(vertical = 10.dp),
         contentAlignment = Alignment.Center
     ) {
-        ThinkingIndicator(animate = animate)
+        SiriWaveIndicator(level = 0.42f, animate = animate)
     }
 }
 
