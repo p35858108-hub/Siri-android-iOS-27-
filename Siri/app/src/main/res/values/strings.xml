@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">Siri</string>
+    <string name="assistant_service_label">Siri</string>
+    <string name="assistant_service_description">Asistente de inteligencia artificial en la cámara frontal</string>
+
+    <!-- Estados de la cápsula -->
+    <string name="state_idle">En reposo</string>
+    <string name="state_listening">Escuchando…</string>
+    <string name="state_typing">Escribe tu mensaje</string>
+    <string name="state_thinking">Pensando…</string>
+    <string name="state_responding">Respuesta</string>
+    <string name="state_error">Algo salió mal</string>
+
+    <!-- Escritura y acciones -->
+    <string name="input_hint">Buscar o preguntar</string>
+    <string name="action_send">Enviar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_microphone">Hablar</string>
+    <string name="action_stop_listening">Dejar de escuchar</string>
+    <string name="action_stop_speaking">Detener lectura</string>
+    <string name="action_speak">Leer en voz alta</string>
+    <string name="action_close">Cerrar</string>
+    <string name="action_retry">Reintentar</string>
+    <string name="action_copy">Copiar</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_back">Atrás</string>
+    <string name="action_open_app">Abrir en la app</string>
+    <string name="hint_swipe_down">Desliza hacia abajo para abrir la conversación</string>
+    <string name="cd_capsule">Cápsula del asistente</string>
+    <string name="cd_response">Respuesta del asistente</string>
+
+    <!-- Pantalla principal e historial -->
+    <string name="main_title">Conversación</string>
+    <string name="history_title">Historial</string>
+    <string name="new_conversation">Nueva conversación</string>
+    <string name="conversation_untitled">Conversación sin título</string>
+    <string name="history_empty">Todavía no hay conversaciones</string>
+    <string name="chat_empty">Empieza una conversación con el asistente</string>
+    <string name="role_user">Tú</string>
+    <string name="role_assistant">Asistente</string>
+    <string name="delete_conversation_title">¿Eliminar conversación?</string>
+    <string name="delete_conversation_message">Se borrarán todos sus mensajes. Esta acción no se puede deshacer.</string>
+
+    <!-- Configuración -->
+    <string name="settings_title">Configuración</string>
+    <string name="settings_providers">Proveedores</string>
+    <string name="settings_models">Modelos</string>
+    <string name="settings_voice">Voz</string>
+    <string name="settings_visual">Apariencia</string>
+    <string name="settings_app">Aplicación</string>
+
+    <string name="provider_add">Añadir proveedor</string>
+    <string name="provider_edit">Editar proveedor</string>
+    <string name="provider_delete">Eliminar proveedor</string>
+    <string name="provider_select">Usar este proveedor</string>
+    <string name="provider_active">Activo</string>
+    <string name="provider_none">Sin proveedores configurados</string>
+    <string name="provider_name">Nombre</string>
+    <string name="provider_type">Proveedor</string>
+    <string name="provider_base_url">URL base</string>
+    <string name="provider_api_key">Clave de API</string>
+    <string name="provider_model_id">Identificador del modelo</string>
+    <string name="provider_protocol">Protocolo</string>
+    <string name="protocol_openai">Compatible con OpenAI</string>
+    <string name="protocol_gemini">Gemini nativo</string>
+    <string name="protocol_anthropic">Anthropic</string>
+    <string name="provider_test">Probar conexión</string>
+    <string name="provider_test_ok">Conexión correcta</string>
+    <string name="provider_delete_message">¿Eliminar el proveedor «%1$s»?</string>
+
+    <string name="voice_language">Idioma de voz</string>
+    <string name="voice_speak_responses">Leer respuestas en voz alta</string>
+    <string name="voice_speech_rate">Velocidad de lectura</string>
+    <string name="voice_pitch">Tono de la voz</string>
+
+    <string name="visual_blur_intensity">Intensidad del desenfoque</string>
+    <string name="visual_capsule_glow">Luz en el contorno de la cápsula</string>
+    <string name="visual_reduce_motion">Reducir animaciones</string>
+
+    <string name="app_default_assistant">Asistente predeterminado</string>
+    <string name="app_default_assistant_summary">Elige esta app como asistente del dispositivo</string>
+    <string name="app_clear_history">Borrar todo el historial</string>
+    <string name="app_version">Versión %1$s</string>
+
+    <!-- Permisos -->
+    <string name="permission_mic_title">Permiso de micrófono</string>
+    <string name="permission_mic_rationale">Necesito acceder al micrófono para escucharte. Puedes seguir escribiendo si prefieres no concederlo.</string>
+    <string name="permission_grant">Conceder permiso</string>
+    <string name="permission_open_settings">Abrir ajustes</string>
+
+    <!-- Errores -->
+    <string name="error_no_provider">Configura un proveedor de IA en los ajustes.</string>
+    <string name="error_no_api_key">Falta la clave de API del proveedor seleccionado.</string>
+    <string name="error_invalid_url">La URL base no es válida.</string>
+    <string name="error_network">No hay conexión con el servidor. Revisa tu red.</string>
+    <string name="error_timeout">El servidor tardó demasiado en responder.</string>
+    <string name="error_auth">La clave de API no es válida o no tiene permisos.</string>
+    <string name="error_rate_limit">Demasiadas solicitudes. Inténtalo de nuevo en un momento.</string>
+    <string name="error_server">Error del servidor (%1$d).</string>
+    <string name="error_empty_response">El modelo no devolvió ninguna respuesta.</string>
+    <string name="error_unknown">Ha ocurrido un error inesperado.</string>
+    <string name="error_speech_not_available">El reconocimiento de voz no está disponible en este dispositivo.</string>
+    <string name="error_speech_no_match">No te he entendido. Inténtalo de nuevo.</string>
+    <string name="error_speech_timeout">No he oído nada.</string>
+    <string name="error_speech_busy">El reconocimiento de voz está ocupado.</string>
+    <string name="error_speech_network">El reconocimiento de voz necesita conexión.</string>
+    <string name="error_tts_not_available">La síntesis de voz no está disponible.</string>
+    <string name="error_tts_language">El idioma de voz seleccionado no está instalado.</string>
+
+</resources>

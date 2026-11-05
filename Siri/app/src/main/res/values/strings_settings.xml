@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Inicio de la configuración -->
+    <string name="settings_providers_summary">Servicios de IA y claves de API</string>
+    <string name="settings_models_summary">Modelo e instrucciones del asistente</string>
+    <string name="settings_voice_summary">Lectura en voz alta e idioma</string>
+    <string name="settings_visual_summary">Desenfoque, luz y animaciones</string>
+    <string name="settings_app_summary">Asistente predeterminado, historial y versión</string>
+
+    <!-- Proveedores -->
+    <string name="provider_active_none">Sin proveedor activo</string>
+    <string name="provider_summary_format">%1$s · %2$s</string>
+    <string name="provider_key_note">La clave se guarda cifrada en este dispositivo.</string>
+    <string name="provider_key_optional">Opcional en servidores locales.</string>
+    <string name="provider_base_url_help">Dirección del servicio, sin la ruta final. Puedes cambiarla para usar otro servidor compatible.</string>
+    <string name="provider_show_key">Mostrar clave</string>
+    <string name="provider_hide_key">Ocultar clave</string>
+    <string name="provider_testing">Comprobando…</string>
+    <string name="provider_save_failed">No se pudo guardar la clave de forma segura.</string>
+    <string name="provider_model_required">Escribe el identificador del modelo.</string>
+
+    <!-- Modelos -->
+    <string name="models_no_provider">Configura un proveedor para elegir un modelo.</string>
+    <string name="models_current">Modelo actual</string>
+    <string name="models_load">Cargar lista de modelos</string>
+    <string name="models_loading">Cargando modelos…</string>
+    <string name="models_available">Modelos disponibles</string>
+    <string name="models_empty">El proveedor no devolvió ningún modelo.</string>
+    <string name="models_search">Buscar modelo</string>
+    <string name="models_selected">Seleccionado</string>
+    <string name="system_prompt_title">Instrucciones del sistema</string>
+    <string name="system_prompt_summary">Se envían al modelo al principio de cada conversación.</string>
+    <string name="action_reset">Restablecer</string>
+
+    <!-- Voz -->
+    <string name="voice_language_system">Idioma del sistema</string>
+    <string name="voice_test">Probar voz</string>
+    <string name="voice_test_sample">Hola, soy tu asistente. Así sueno al leer una respuesta.</string>
+
+    <!-- Apariencia -->
+    <string name="visual_blur_unsupported">El desenfoque necesita Android 12 o superior. En esta versión se usa un fondo oscuro.</string>
+
+    <!-- Aplicación -->
+    <string name="app_clear_history_message">Se borrarán todas las conversaciones. Esta acción no se puede deshacer.</string>
+    <string name="app_reset_settings">Restablecer ajustes</string>
+    <string name="app_reset_settings_summary">Vuelve a los valores iniciales de voz, apariencia e instrucciones. No borra los proveedores.</string>
+    <string name="app_reset_settings_message">Se restablecerán los ajustes de voz, apariencia e instrucciones del sistema.</string>
+    <string name="app_about">Acerca de</string>
+
+</resources>

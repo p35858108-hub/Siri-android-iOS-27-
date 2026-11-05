@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Ventana (evita destellos al abrir la app) -->
+    <color name="window_background">#F6F6F8</color>
+
+    <!-- Cápsula: siempre negro profundo, también en modo claro -->
+    <color name="capsule_black">#000000</color>
+    <color name="capsule_surface">#0B0B0D</color>
+    <color name="capsule_border">#33FFFFFF</color>
+    <color name="capsule_glow">#1AFFFFFF</color>
+    <color name="capsule_reflection">#664A6CF7</color>
+
+    <!-- Texto sobre la cápsula -->
+    <color name="capsule_text_primary">#F2F2F5</color>
+    <color name="capsule_text_secondary">#A6A6B0</color>
+
+    <!-- Fondo difuminado detrás de la cápsula -->
+    <color name="scrim_blur">#59000000</color>
+    <color name="scrim_blur_fallback">#B3000000</color>
+
+    <!-- Texto en la app completa -->
+    <color name="text_primary">#111114</color>
+    <color name="text_secondary">#5E5E68</color>
+
+    <!-- Estados -->
+    <color name="accent">#4A6CF7</color>
+    <color name="error">#E5484D</color>
+
+</resources>
