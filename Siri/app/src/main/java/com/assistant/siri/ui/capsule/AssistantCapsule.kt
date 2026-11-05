@@ -259,7 +259,6 @@ fun AssistantCapsule(
                         morphColor = morphColor
                     )
                 }
-                .then(gestureModifier)
         ) {
             // El contenido se maquetea siempre al ancho de destino y se centra dentro del marco
             // que se está animando, así que no "resbala" mientras la cápsula crece.
@@ -287,6 +286,9 @@ fun AssistantCapsule(
                         role = Role.Button
                     ) { onClick(state) }
                     .onSizeChanged { size -> measuredHeights[kind] = size.height }
+                    // El detector de arrastre debe limitarse al área real de la cápsula.
+                    // En el contenedor exterior ocuparía toda la pantalla y bloquearía controles.
+                    .then(gestureModifier)
             ) {
                 AnimatedContent(
                     targetState = kind,
